@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">pamedhisJAV</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_riwayat">Riwayat</string>
+    <string name="title_resep">Resep</string>
+    <string name="more">MORE</string>
+    <string name="bestArtikel">Best Artikel</string>
+    <string name="daftarRiwayat">Daftar Riwayat</string>
+    <string name="List">List</string>
+    <string name="Graphic">Graphic</string>
+    <string name="history">History</string>
+    <string name="myResep">My Resep</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

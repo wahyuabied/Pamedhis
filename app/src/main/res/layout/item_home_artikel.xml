@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:padding="@dimen/_2sdp"
+            android:id="@+id/itemHomeArtikel_tvTitle"
+            android:textColor="#000"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:text="Sempak yang terbuang percuma"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+        <android.support.v7.widget.CardView
+            app:cardCornerRadius="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@color/colorAccent"
+                android:scaleType="fitXY"
+                android:id="@+id/itemHomeArtikel_ivImage"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp" />
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="match_parent">
+
+    </LinearLayout>
+
+</LinearLayout>
