@@ -15,23 +15,38 @@
         android:layout_marginRight="@dimen/_10sdp"
         android:layout_height="wrap_content">
         <LinearLayout
-            android:paddingTop="@dimen/_20sdp"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingRight="@dimen/_5sdp"
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="@dimen/_300sdp">
-            <TextView
-                android:layout_marginLeft="@dimen/_80sdp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorAccent"
-                android:text="Nama Pasien "/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/home_tvNamaPasien"
+                    android:layout_marginLeft="@dimen/_80sdp"
+                    android:layout_width="wrap_content"
+                    android:textSize="10pt"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorAccent" />
+
+                <ImageView
+                    android:id="@+id/home_ivLogout"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/ic_cancel_black_24dp"
+                    android:tint="@color/colorAccent"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
 
             <TextView
+                android:id="@+id/home_tvNikPasien"
                 android:layout_marginLeft="@dimen/_80sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorAccent"
-                android:text="NIK"/>
+                android:textColor="@color/colorAccent" />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
@@ -45,7 +60,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
-            android:src="@color/colorAccent"
+            android:padding="@dimen/_15sdp"
+            android:src="@drawable/ic_1556099272_patient"
+            android:tint="@color/colorAccent"
+            android:scaleType="fitXY"
             android:id="@+id/home_ivProfile"
             android:layout_width="@dimen/_90sdp"
             android:layout_height="@dimen/_90sdp" />

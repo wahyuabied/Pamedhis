@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mrabid.pamedhisjav.R;
+import com.mrabid.pamedhisjav.fragment.MyResep.MyResepAdapter;
 import com.mrabid.pamedhisjav.model.Dokter;
+import com.mrabid.pamedhisjav.model.Obat;
 import com.mrabid.pamedhisjav.model.Resep;
 
 import java.util.ArrayList;
@@ -18,15 +20,15 @@ import java.util.ArrayList;
 public class HistoryFragment extends Fragment {
 
     RecyclerView recyclerView;
-    ArrayList<Resep> listDataResep;
     HistoryAdapter mAdapter;
+    ArrayList<Resep> listDataResep = new ArrayList<>();
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         recyclerView = getActivity().findViewById(R.id.history_rvListHistoryResep);
-        listDataResep = loadData();
-        mAdapter = new HistoryAdapter(listDataResep,getActivity());
+        DummyData();
+        mAdapter = new HistoryAdapter(getActivity(),listDataResep);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(mAdapter);
 
@@ -38,12 +40,13 @@ public class HistoryFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_history, container, false);
     }
 
-    public ArrayList<Resep> loadData(){
-        ArrayList<Resep> listDummyResep = new ArrayList<>();
-        Dokter dokter = new Dokter(1,"Wahyu Abid","asasd","Kejiwaan","081217302696");
-            for(int i =0;i<5;i++)
-                listDummyResep.add(new Resep(1,"Wahyu Abid A","21-05-1997","124",dokter,"Dibayar"));
-        return listDummyResep;
+    public void DummyData(){
+        ArrayList<Obat> obats = new ArrayList<>();
+        for(int i =0;i<5;i++)
+            obats.add(new Obat(1,"Paracetamol"));
+        Dokter dokter = new Dokter("123","wahyuabied","hash",1,"asdawidjaawa","u12/23872","Wahyu Abid","Sambungrejo","081217302696","wahyu.abied@gmail.com","Default.jpg");
+        for(int i =0;i<4;i++)
+            listDataResep.add(new Resep(1,"Pasien Wahyu Abid","21-05-1997","50.000",dokter,"Belum Dibeli",obats));
     }
 
 }

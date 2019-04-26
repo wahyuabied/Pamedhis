@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NotificationActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:elevation="@dimen/_5sdp"
+        app:contentInsetStart="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp">
+        <LinearLayout
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/notification_ivBack"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:tint="@color/colorAccent"
+                android:src="@drawable/ic_arrow_back_black_24dp"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_gravity="center"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="9pt"
+                android:text="Data Access Permission"/>
+
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_gravity="center"
+        android:src="@color/colorAccent"
+        android:id="@+id/notification_ivProfileDokter"
+        android:layout_width="@dimen/_130sdp"
+        android:layout_height="@dimen/_130sdp" />
+
+    <TextView
+        android:id="@+id/notification_tvNameDokter"
+        android:textColor="#000"
+        android:textSize="10pt"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:id="@+id/notification_tvDetailDokter"
+        android:textColor="#000"
+        android:textSize="8pt"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/notification_tvContentDokter"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp">
+
+        <Button
+            android:id="@+id/notification_btnAccept"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="#fff"
+            android:text="Izinkan"
+            android:textSize="8pt"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/notification_btnIgnore"
+            android:backgroundTint="#FF2B0D"
+            android:textColor="#fff"
+            android:textSize="8pt"
+            android:text="Tolak"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</LinearLayout>

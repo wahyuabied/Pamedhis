@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:id="@+id/notification_llIcon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/notif_ivIcon"
+            android:src="@drawable/img_logo"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp" />
+
+        <TextView
+            android:layout_toRightOf="@+id/notif_ivIcon"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"/>
+
+        <TextView
+            android:layout_alignParentRight="true"
+            android:id="@+id/notif_tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_below="@id/notification_llIcon"
+        android:id="@+id/notif_ivDokter"
+        android:padding="@dimen/_5sdp"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"/>
+
+    <TextView
+        android:layout_below="@+id/notification_llIcon"
+        android:layout_toRightOf="@+id/notif_ivDokter"
+        android:id="@+id/notif_tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:textColor="#000"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_toRightOf="@+id/notif_ivDokter"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_below="@+id/notif_tvTitle"
+        android:id="@+id/notif_tvContent"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:textColor="#000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>

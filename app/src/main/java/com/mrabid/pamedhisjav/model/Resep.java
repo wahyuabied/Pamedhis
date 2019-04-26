@@ -1,6 +1,7 @@
 package com.mrabid.pamedhisjav.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Resep implements Serializable {
     private int id;
@@ -9,6 +10,7 @@ public class Resep implements Serializable {
     private String jumlah;
     private Dokter dokter;
     private String status;
+    private ArrayList<Obat> obats;
 
     public Resep(int id, String penerima, String tanggal, String jumlah, Dokter dokter,String status) {
         this.id = id;
@@ -17,6 +19,24 @@ public class Resep implements Serializable {
         this.jumlah = jumlah;
         this.dokter = dokter;
         this.status = status;
+    }
+
+    public Resep(int id, String penerima, String tanggal, String jumlah, Dokter dokter, String status, ArrayList<Obat> obats) {
+        this.id = id;
+        this.penerima = penerima;
+        this.tanggal = tanggal;
+        this.jumlah = jumlah;
+        this.dokter = dokter;
+        this.status = status;
+        this.obats = obats;
+    }
+
+    public ArrayList<Obat> getObats() {
+        return obats;
+    }
+
+    public void setObats(ArrayList<Obat> obats) {
+        this.obats = obats;
     }
 
     public Resep() {

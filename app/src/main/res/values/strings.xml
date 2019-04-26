@@ -11,7 +11,15 @@
     <string name="Graphic">Graphic</string>
     <string name="history">History</string>
     <string name="myResep">My Resep</string>
+    <string name="default_notification_channel_id">channel_01</string>
+    <string name="msg_token_fmt">Token </string>
+    <string name="fcm_message">Access Data Request</string>
+
+
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="channel_name">Pamedhis</string>
+    <string name="channel_description">request access history</string>
 </resources>

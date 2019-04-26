@@ -61,7 +61,7 @@ public class RiwayatFragment extends Fragment {
 
     public ArrayList<Riwayat> getListDataRiwayat() {
         ArrayList<Riwayat> listDummyRiwayat = new ArrayList<>();
-        Dokter dokter = new Dokter(1,"Wahyu Abid","asasd","Kejiwaan","081217302696");
+        Dokter dokter = new Dokter("123","wahyuabied","hash",1,"asdawidjaawa","u12/23872","Wahyu Abid","Sambungrejo","081217302696","wahyu.abied@gmail.com","Default.jpg");
         for(int i=0;i<5;i++)
             listDummyRiwayat.add(new Riwayat(1,dokter,"21 April 2019","Sambungrejo Rt 18 Rw 07","Depresi Ringan"));
 
