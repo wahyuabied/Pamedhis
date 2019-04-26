@@ -21,9 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.mrabid.pamedhisjav.LoginActivity;
+import com.mrabid.pamedhisjav.activity.LoginActivity;
 import com.mrabid.pamedhisjav.R;
-import com.mrabid.pamedhisjav.firebase.MyFirebaseMessagingService;
 import com.mrabid.pamedhisjav.helper.notification.Notifications;
 import com.mrabid.pamedhisjav.model.Artikel;
 import com.mrabid.pamedhisjav.model.Dokter;
@@ -40,7 +39,7 @@ public class HomeFragment extends Fragment {
     RecyclerView listArtikel;
     ArrayList<Artikel> listDataArtikel = new ArrayList<>();
     HomeArtikelAdapter  mAdapter;
-    TextView nama,nik;
+    TextView nama,nik,alamat,noTelp,golDarah,jenisKelamin,email;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor prefs;
     User user;
@@ -58,6 +57,11 @@ public class HomeFragment extends Fragment {
         listArtikel = getActivity().findViewById(R.id.home_rvArtikel);
         nama = getActivity().findViewById(R.id.home_tvNamaPasien);
         nik = getActivity().findViewById(R.id.home_tvNikPasien);
+        alamat = getActivity().findViewById(R.id.home_tvAlamatPasien);
+        noTelp = getActivity().findViewById(R.id.home_tvTeleponPasien);
+        golDarah = getActivity().findViewById(R.id.home_tvGolonganDarahPasien);
+        jenisKelamin = getActivity().findViewById(R.id.home_tvJenisKelaminPasien);
+        email = getActivity().findViewById(R.id.home_tvEmailPasien);
         logout = getActivity().findViewById(R.id.home_ivLogout);
 
         loadArtikel.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +107,6 @@ public class HomeFragment extends Fragment {
                     }
                 }).setIcon(R.drawable.ic_cancel_black_24dp);
                 dialog.show();
-
             }
         });
     }
@@ -115,8 +118,13 @@ public class HomeFragment extends Fragment {
     }
 
     public void setBody(){
-        nama.setText("Nama : "+user.getNama());
+        nama.setText(user.getNama());
         nik.setText("Nik : "+user.getNik());
+        alamat.setText("Alamat : "+user.getAlamat());
+        email.setText("Email : "+user.getEmail());
+        golDarah.setText("Gol. Darah : "+user.getGolDarah());
+        jenisKelamin.setText("Jenis Kelamin : "+user.getJenisKelamin());
+        noTelp.setText("Telp : "+user.getNoTelp());
     }
 
     public ArrayList<Artikel> loadData(){

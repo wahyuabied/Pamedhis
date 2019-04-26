@@ -1,21 +1,16 @@
 package com.mrabid.pamedhisjav.helper.notification;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Build;
-import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 
-import com.mrabid.pamedhisjav.NotificationActivity;
+import com.mrabid.pamedhisjav.activity.NotificationActivity;
 import com.mrabid.pamedhisjav.R;
 import com.mrabid.pamedhisjav.model.Dokter;
 import com.mrabid.pamedhisjav.model.User;

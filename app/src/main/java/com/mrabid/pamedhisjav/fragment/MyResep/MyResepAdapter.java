@@ -1,6 +1,7 @@
 package com.mrabid.pamedhisjav.fragment.MyResep;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.mrabid.pamedhisjav.R;
+import com.mrabid.pamedhisjav.activity.DetailMyResep.DetailMyResep;
 import com.mrabid.pamedhisjav.model.Resep;
 
 import java.util.ArrayList;
@@ -32,7 +34,8 @@ public class MyResepAdapter extends RecyclerView.Adapter<MyResepAdapter.MyViewHo
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Maintenance", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(context, DetailMyResep.class);
+                context.startActivity(i);
             }
         });
 

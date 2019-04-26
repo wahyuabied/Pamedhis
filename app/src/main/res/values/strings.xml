@@ -14,8 +14,7 @@
     <string name="default_notification_channel_id">channel_01</string>
     <string name="msg_token_fmt">Token </string>
     <string name="fcm_message">Access Data Request</string>
-
-
+    <string name="beli">Beli</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

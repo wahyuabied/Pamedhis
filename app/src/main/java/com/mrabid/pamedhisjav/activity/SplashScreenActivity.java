@@ -1,4 +1,4 @@
-package com.mrabid.pamedhisjav;
+package com.mrabid.pamedhisjav.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -7,9 +7,9 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.mrabid.pamedhisjav.R;
 import com.mrabid.pamedhisjav.model.User;
 
 public class SplashScreenActivity extends AppCompatActivity {

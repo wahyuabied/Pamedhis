@@ -1,4 +1,4 @@
-package com.mrabid.pamedhisjav;
+package com.mrabid.pamedhisjav.activity;
 
 import android.app.NotificationManager;
 import android.os.Build;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mrabid.pamedhisjav.R;
 import com.mrabid.pamedhisjav.model.Dokter;
 import com.mrabid.pamedhisjav.model.User;
 

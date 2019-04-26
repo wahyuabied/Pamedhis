@@ -1,4 +1,4 @@
-package com.mrabid.pamedhisjav;
+package com.mrabid.pamedhisjav.activity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.mrabid.pamedhisjav.R;
 import com.mrabid.pamedhisjav.fragment.Home.HomeFragment;
 import com.mrabid.pamedhisjav.fragment.Resep.ResepFragment;
 import com.mrabid.pamedhisjav.fragment.Riwayat.RiwayatFragment;
@@ -41,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
                         // Get new Instance ID token
                         String token = task.getResult().getToken();
-
                         // Log and toast
                         String msg = getString(R.string.msg_token_fmt, token);
                         Log.e("Response",token);

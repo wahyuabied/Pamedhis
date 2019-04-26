@@ -1,4 +1,4 @@
-package com.mrabid.pamedhisjav;
+package com.mrabid.pamedhisjav.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.mrabid.pamedhisjav.R;
 import com.mrabid.pamedhisjav.helper.Validator;
 import com.mrabid.pamedhisjav.helper.retrofit.CallbackSelf;
 import com.mrabid.pamedhisjav.helper.retrofit.ServicesPamedhis;
