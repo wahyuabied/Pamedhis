@@ -9,16 +9,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mrabid.pamedhisjav.R;
+import com.mrabid.pamedhisjav.model.BlockRiwayat;
 import com.mrabid.pamedhisjav.model.Riwayat;
 
 import java.util.ArrayList;
 
 public class RiwayatAdapter extends RecyclerView.Adapter<RiwayatAdapter.MyViewHolder> {
-    ArrayList<Riwayat> list;
+    ArrayList<BlockRiwayat> list;
     private Context context;
 
 
-    public RiwayatAdapter(ArrayList<Riwayat> list, Context context){
+    public RiwayatAdapter(ArrayList<BlockRiwayat> list, Context context){
         this.list = list;
         this.context = context;
     }
@@ -30,11 +31,11 @@ public class RiwayatAdapter extends RecyclerView.Adapter<RiwayatAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(final RiwayatAdapter.MyViewHolder holder, int position) {
-        Riwayat p = list.get(position);
-        holder.namaDokter.setText(p.getDokter().getNama());
-        holder.tanggal.setText(p.getTanggal());
-        holder.lokasi.setText(p.getLokasi());
-        holder.teleponDokter.setText(p.getDokter().getNoTelp());
+        BlockRiwayat p = list.get(position);
+        holder.namaDokter.setText(p.getDokter_docs().getNama());
+        holder.tanggal.setText(p.getData().getTanggal());
+        holder.lokasi.setText(p.getDokter_docs().getAlamat());
+        holder.teleponDokter.setText(p.getDokter_docs().getNoTelp());
 
 //        Picasso.with(context).load(p.getImage()).into(holder.imageView);
 

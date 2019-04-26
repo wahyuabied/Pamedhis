@@ -1,5 +1,7 @@
 package com.mrabid.pamedhisjav.fragment.Riwayat;
 
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -9,26 +11,46 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.mrabid.pamedhisjav.R;
+import com.mrabid.pamedhisjav.helper.retrofit.CallbackSelf;
+import com.mrabid.pamedhisjav.helper.retrofit.ServicesPamedhis;
+import com.mrabid.pamedhisjav.model.BlockRiwayat;
 import com.mrabid.pamedhisjav.model.Dokter;
 import com.mrabid.pamedhisjav.model.Riwayat;
+import com.mrabid.pamedhisjav.model.User;
+import com.mrabid.pamedhisjav.model.response.ResponseRiwayat;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static android.content.Context.MODE_NO_LOCALIZED_COLLATORS;
 
 public class RiwayatFragment extends Fragment {
 
     RecyclerView recyclerView;
     LinearLayout list,graphic;
-    ArrayList<Riwayat> listDataRiwayat = new ArrayList<>();
+    ResponseRiwayat responseRiwayat;
+    SharedPreferences sharedPreferences;
+    User user;
     RiwayatAdapter mAdapter;
+    ArrayList<BlockRiwayat> listDataRiwayat;
+    @SuppressLint("WrongConstant")
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        sharedPreferences = getActivity().getSharedPreferences("data",MODE_NO_LOCALIZED_COLLATORS);
         recyclerView = getActivity().findViewById(R.id.riwayat_rvListRiwayat);
         list = getActivity().findViewById(R.id.riwayat_llList);
         graphic = getActivity().findViewById(R.id.riwayat_llGraphic);
+
+        user = new Gson().fromJson(sharedPreferences.getString("user",""), User.class);
 
         list.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,10 +68,17 @@ public class RiwayatFragment extends Fragment {
             }
         });
 
-        listDataRiwayat = getListDataRiwayat();
-        mAdapter = new RiwayatAdapter(listDataRiwayat,getActivity());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(mAdapter);
+        getData(new CallbackSelf() {
+            @Override
+            public void onSuccess(boolean result) {
+                if(result){
+                    mAdapter = new RiwayatAdapter(listDataRiwayat,getActivity());
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    recyclerView.setAdapter(mAdapter);
+                }
+            }
+        });
+
 
     }
 
@@ -59,12 +88,22 @@ public class RiwayatFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_riwayat, container, false);
     }
 
-    public ArrayList<Riwayat> getListDataRiwayat() {
-        ArrayList<Riwayat> listDummyRiwayat = new ArrayList<>();
-        Dokter dokter = new Dokter("123","wahyuabied","hash",1,"asdawidjaawa","u12/23872","Wahyu Abid","Sambungrejo","081217302696","wahyu.abied@gmail.com","Default.jpg");
-        for(int i=0;i<5;i++)
-            listDummyRiwayat.add(new Riwayat(1,dokter,"21 April 2019","Sambungrejo Rt 18 Rw 07","Depresi Ringan"));
+    public void getData( final CallbackSelf callbackSelf){
+        ServicesPamedhis.buildServiceClient().getRiwayat(user.get_id()).enqueue(new Callback<ResponseRiwayat>() {
+            @Override
+            public void onResponse(Call<ResponseRiwayat> call, Response<ResponseRiwayat> response) {
+                if(response.body().getStatus()){
+                    listDataRiwayat = response.body().getData();
+                    callbackSelf.onSuccess(true);
+                }else {
+                    Toast.makeText(getActivity(), "Ups data tidak ditemukan", Toast.LENGTH_SHORT).show();
+                }
+            }
 
-        return listDummyRiwayat;
+            @Override
+            public void onFailure(Call<ResponseRiwayat> call, Throwable t) {
+                Toast.makeText(getActivity(), "Check internet connection", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
