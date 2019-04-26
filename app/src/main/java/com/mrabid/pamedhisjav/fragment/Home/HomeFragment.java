@@ -83,7 +83,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Dokter dokter = new Dokter("123","wahyuabied","hash",1,"asdawidjaawa","u12/23872","Wahyu Abid","Sambungrejo","081217302696","wahyu.abied@gmail.com","Default.jpg");
-                Notifications.displayNotification(getActivity(),dokter,new Gson().fromJson(sharedPreferences.getString("user",""),User.class));
+//                Notifications.displayNotification(getActivity(),dokter,"Data Access Permission");
             }
         });
 

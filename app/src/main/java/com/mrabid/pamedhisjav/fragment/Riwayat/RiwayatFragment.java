@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class RiwayatFragment extends Fragment {
     RecyclerView recyclerView;
     LinearLayout list,graphic;
     SharedPreferences sharedPreferences;
+    ImageView noConn;
     ProgressBar loading;
     User user;
     RiwayatAdapter mAdapter;
@@ -49,6 +51,7 @@ public class RiwayatFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         sharedPreferences = getActivity().getSharedPreferences("data",MODE_NO_LOCALIZED_COLLATORS);
+        noConn = getActivity().findViewById(R.id.riwayat_ivNoConnection);
         loading = getActivity().findViewById(R.id.riwayat_pb);
         recyclerView = getActivity().findViewById(R.id.riwayat_rvListRiwayat);
         list = getActivity().findViewById(R.id.riwayat_llList);
@@ -72,15 +75,41 @@ public class RiwayatFragment extends Fragment {
             }
         });
 
+        noConn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getData(new CallbackSelf() {
+                    @Override
+                    public void onSuccess(boolean result) {
+                        if(result){
+                            if(listDataRiwayat.size()>0){
+                                recyclerView.setVisibility(View.VISIBLE);
+                                mAdapter = new RiwayatAdapter(listDataRiwayat,getActivity());
+                                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                                recyclerView.setAdapter(mAdapter);
+                            }else{
+                                Toast.makeText(getActivity(), "Anda tidak memiliki riwayat", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
         getData(new CallbackSelf() {
             @Override
             public void onSuccess(boolean result) {
                 if(result){
                     loading.setVisibility(GONE);
-                    recyclerView.setVisibility(View.VISIBLE);
-                    mAdapter = new RiwayatAdapter(listDataRiwayat,getActivity());
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    recyclerView.setAdapter(mAdapter);
+                    if(listDataRiwayat.size()>0){
+                        recyclerView.setVisibility(View.VISIBLE);
+                        mAdapter = new RiwayatAdapter(listDataRiwayat,getActivity());
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                        recyclerView.setAdapter(mAdapter);
+                    }else{
+                        Toast.makeText(getActivity(), "Anda tidak memiliki riwayat", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
         });
@@ -99,20 +128,22 @@ public class RiwayatFragment extends Fragment {
             @Override
             public void onResponse(Call<ResponseRiwayat> call, Response<ResponseRiwayat> response) {
                 if(response.body().getStatus()){
-                    listDataRiwayat = response.body().getData();
-                    callbackSelf.onSuccess(true);
-                }else {
-                    Toast.makeText(getActivity(), "Ups data tidak ditemukan", Toast.LENGTH_SHORT).show();
+                        noConn.setVisibility(GONE);
+                        listDataRiwayat = response.body().getData();
+                        callbackSelf.onSuccess(true);
+                }else if(response.body().getStatus()==false){
                     loading.setVisibility(GONE);
-                    callbackSelf.onSuccess(false);
+                    noConn.setVisibility(GONE);
+                    Toast.makeText(getActivity(), "Maaf data anda sudah tidak aman", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseRiwayat> call, Throwable t) {
                 callbackSelf.onSuccess(false);
+                Toast.makeText(getActivity(), "Tidak ada koneksi", Toast.LENGTH_SHORT).show();
                 loading.setVisibility(GONE);
-                Toast.makeText(getActivity(), "Check internet connection", Toast.LENGTH_SHORT).show();
+                noConn.setVisibility(View.VISIBLE);
             }
         });
     }

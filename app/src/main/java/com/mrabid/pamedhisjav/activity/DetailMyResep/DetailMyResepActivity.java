@@ -17,7 +17,7 @@ import com.mrabid.pamedhisjav.model.Resep;
 
 import java.util.ArrayList;
 
-public class DetailMyResep extends AppCompatActivity {
+public class DetailMyResepActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     ImageView back;

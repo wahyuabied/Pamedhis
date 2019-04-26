@@ -6,6 +6,11 @@ import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.mrabid.pamedhisjav.helper.notification.Notifications;
+import com.mrabid.pamedhisjav.model.Dokter;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
@@ -18,7 +23,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         if (remoteMessage.getData().size() > 0) {
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
 
-            if (/* Check if data needs to be processed by long running job */ true) {
+            if (true) {
                 scheduleJob();
             } else {
                 handleNow();
@@ -26,7 +31,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         }
         if (remoteMessage.getNotification() != null) {
-//            Notifications.displayNotification(this,remoteMessage.getNotification().getBody(),remoteMessage.getNotification().getTitle());
+            Notifications.displayNotification(this,remoteMessage.getNotification().getBody(),remoteMessage.getNotification().getTitle());
         }
 
     }

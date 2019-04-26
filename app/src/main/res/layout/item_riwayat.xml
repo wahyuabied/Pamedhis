@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#fff"
+    android:id="@+id/riwayat_rlt"
     android:padding="@dimen/_5sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
