@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -38,7 +39,8 @@ import static android.view.View.GONE;
 public class RiwayatFragment extends Fragment {
 
     RecyclerView recyclerView;
-    LinearLayout list,graphic;
+    LinearLayout list,graphic,warning;
+    TextView message;
     SharedPreferences sharedPreferences;
     ImageView noConn;
     ProgressBar loading;
@@ -56,6 +58,8 @@ public class RiwayatFragment extends Fragment {
         recyclerView = getActivity().findViewById(R.id.riwayat_rvListRiwayat);
         list = getActivity().findViewById(R.id.riwayat_llList);
         graphic = getActivity().findViewById(R.id.riwayat_llGraphic);
+        warning = getActivity().findViewById(R.id.riwayat_llWarning);
+        message = getActivity().findViewById(R.id.riwayat_tvMessageWarning);
 
         user = new Gson().fromJson(sharedPreferences.getString("user",""), User.class);
 
@@ -129,12 +133,15 @@ public class RiwayatFragment extends Fragment {
             public void onResponse(Call<ResponseRiwayat> call, Response<ResponseRiwayat> response) {
                 if(response.body().getStatus()){
                         noConn.setVisibility(GONE);
+                        warning.setVisibility(GONE);
                         listDataRiwayat = response.body().getData();
                         callbackSelf.onSuccess(true);
                 }else if(response.body().getStatus()==false){
                     loading.setVisibility(GONE);
                     noConn.setVisibility(GONE);
-                    Toast.makeText(getActivity(), "Maaf data anda sudah tidak aman", Toast.LENGTH_SHORT).show();
+                    warning.setVisibility(View.VISIBLE);
+                    message.setText(response.body().getMessage()+"");
+                    Toast.makeText(getActivity(), response.body().getMessage()+"", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -143,6 +150,7 @@ public class RiwayatFragment extends Fragment {
                 callbackSelf.onSuccess(false);
                 Toast.makeText(getActivity(), "Tidak ada koneksi", Toast.LENGTH_SHORT).show();
                 loading.setVisibility(GONE);
+                warning.setVisibility(GONE);
                 noConn.setVisibility(View.VISIBLE);
             }
         });

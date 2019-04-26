@@ -15,9 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.DetailArtikelActivity"></activity>
-        <activity android:name=".activity.DetailRiwayatActivity" />
-        <activity android:name=".activity.DetailMyResep.DetailMyResepActivity" />
+        <activity android:name=".activity.DetailArtikelActivity"
+            android:launchMode="singleTop"></activity>
+        <activity android:name=".activity.DetailRiwayatActivity"
+            android:launchMode="singleTop"/>
+        <activity android:name=".activity.DetailMyResep.DetailMyResepActivity"
+            android:launchMode="singleTop"/>
 
         <service
             android:name=".firebase.MyFirebaseMessagingService"

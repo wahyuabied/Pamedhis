@@ -78,6 +78,31 @@
         android:layout_height="@dimen/_100sdp"
         android:src="@drawable/ic_no_connection"/>
 
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/riwayat_llWarning"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:layout_width="@dimen/_360sdp"
+        android:layout_height="@dimen/_360sdp">
+        <ImageView
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:src="@drawable/ic_warning_black_24dp"
+            android:tint="#B31"/>
+        <TextView
+            android:padding="@dimen/_20sdp"
+            android:id="@+id/riwayat_tvMessageWarning"
+            android:textSize="8pt"
+            android:textColor="#B31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:visibility="gone"
         android:id="@+id/riwayat_rvListRiwayat"
