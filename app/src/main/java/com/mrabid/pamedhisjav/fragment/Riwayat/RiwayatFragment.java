@@ -7,10 +7,12 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -30,13 +32,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.content.Context.MODE_NO_LOCALIZED_COLLATORS;
+import static android.view.View.GONE;
 
 public class RiwayatFragment extends Fragment {
 
     RecyclerView recyclerView;
     LinearLayout list,graphic;
-    ResponseRiwayat responseRiwayat;
     SharedPreferences sharedPreferences;
+    ProgressBar loading;
     User user;
     RiwayatAdapter mAdapter;
     ArrayList<BlockRiwayat> listDataRiwayat;
@@ -46,6 +49,7 @@ public class RiwayatFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         sharedPreferences = getActivity().getSharedPreferences("data",MODE_NO_LOCALIZED_COLLATORS);
+        loading = getActivity().findViewById(R.id.riwayat_pb);
         recyclerView = getActivity().findViewById(R.id.riwayat_rvListRiwayat);
         list = getActivity().findViewById(R.id.riwayat_llList);
         graphic = getActivity().findViewById(R.id.riwayat_llGraphic);
@@ -56,14 +60,14 @@ public class RiwayatFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 graphic.setVisibility(View.VISIBLE);
-                list.setVisibility(View.GONE);
+                list.setVisibility(GONE);
             }
         });
 
         graphic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                graphic.setVisibility(View.GONE);
+                graphic.setVisibility(GONE);
                 list.setVisibility(View.VISIBLE);
             }
         });
@@ -72,6 +76,8 @@ public class RiwayatFragment extends Fragment {
             @Override
             public void onSuccess(boolean result) {
                 if(result){
+                    loading.setVisibility(GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
                     mAdapter = new RiwayatAdapter(listDataRiwayat,getActivity());
                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     recyclerView.setAdapter(mAdapter);
@@ -89,7 +95,7 @@ public class RiwayatFragment extends Fragment {
     }
 
     public void getData( final CallbackSelf callbackSelf){
-        ServicesPamedhis.buildServiceClient().getRiwayat(user.get_id()).enqueue(new Callback<ResponseRiwayat>() {
+        ServicesPamedhis.buildServiceClientHeader().getRiwayat(user.getIdPasien(),user.getToken()).enqueue(new Callback<ResponseRiwayat>() {
             @Override
             public void onResponse(Call<ResponseRiwayat> call, Response<ResponseRiwayat> response) {
                 if(response.body().getStatus()){
@@ -97,11 +103,15 @@ public class RiwayatFragment extends Fragment {
                     callbackSelf.onSuccess(true);
                 }else {
                     Toast.makeText(getActivity(), "Ups data tidak ditemukan", Toast.LENGTH_SHORT).show();
+                    loading.setVisibility(GONE);
+                    callbackSelf.onSuccess(false);
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseRiwayat> call, Throwable t) {
+                callbackSelf.onSuccess(false);
+                loading.setVisibility(GONE);
                 Toast.makeText(getActivity(), "Check internet connection", Toast.LENGTH_SHORT).show();
             }
         });

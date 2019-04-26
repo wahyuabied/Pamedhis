@@ -32,10 +32,10 @@ public class RiwayatAdapter extends RecyclerView.Adapter<RiwayatAdapter.MyViewHo
     @Override
     public void onBindViewHolder(final RiwayatAdapter.MyViewHolder holder, int position) {
         BlockRiwayat p = list.get(position);
-        holder.namaDokter.setText(p.getDokter_docs().getNama());
+        holder.namaDokter.setText(p.getDokter_docs().get(0).getNama());
         holder.tanggal.setText(p.getData().getTanggal());
-        holder.lokasi.setText(p.getDokter_docs().getAlamat());
-        holder.teleponDokter.setText(p.getDokter_docs().getNoTelp());
+        holder.lokasi.setText(p.getDokter_docs().get(0).getAlamat());
+        holder.teleponDokter.setText(p.getDokter_docs().get(0).getNoTelp());
 
 //        Picasso.with(context).load(p.getImage()).into(holder.imageView);
 
