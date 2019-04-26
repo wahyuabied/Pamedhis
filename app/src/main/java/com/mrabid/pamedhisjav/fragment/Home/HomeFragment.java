@@ -77,6 +77,8 @@ public class HomeFragment extends Fragment {
         //set Data to body
         setBody();
 
+        Toast.makeText(getActivity(), user.getToken()+"", Toast.LENGTH_SHORT).show();
+
         profile.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override

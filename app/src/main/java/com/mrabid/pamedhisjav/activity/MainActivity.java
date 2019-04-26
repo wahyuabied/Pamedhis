@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                         // Log and toast
                         String msg = getString(R.string.msg_token_fmt, token);
                         Log.e("Response",token);
-                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
                     }
                 });
         FirebaseMessaging.getInstance().setAutoInitEnabled(true);
