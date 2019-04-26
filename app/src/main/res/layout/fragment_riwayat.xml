@@ -61,8 +61,16 @@
                 android:src="@drawable/ic_timeline_black_24dp"/>
         </LinearLayout>
     </RelativeLayout>
+    
+    <ProgressBar
+        android:id="@+id/riwayat_pb"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp" />
 
     <android.support.v7.widget.RecyclerView
+        android:visibility="gone"
         android:id="@+id/riwayat_rvListRiwayat"
         android:layout_marginTop="@dimen/_70sdp"
         android:layout_width="match_parent"
