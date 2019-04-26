@@ -11,6 +11,4 @@ public class ResponseRiwayat implements Serializable {
     private String status;
     private String message;
     private ArrayList<BlockRiwayat> data;
-
-
 }
