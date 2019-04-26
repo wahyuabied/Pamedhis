@@ -1,10 +1,14 @@
 package com.mrabid.pamedhisjav.helper.retrofit;
 
+import com.mrabid.pamedhisjav.model.Artikel;
 import com.mrabid.pamedhisjav.model.Dokter;
 import com.mrabid.pamedhisjav.model.User;
+import com.mrabid.pamedhisjav.model.response.ResponseArtikel;
 import com.mrabid.pamedhisjav.model.response.ResponseDokter;
 import com.mrabid.pamedhisjav.model.response.ResponseRiwayat;
 import com.mrabid.pamedhisjav.model.response.ResponseUser;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -34,4 +38,10 @@ public interface API {
     @POST("riwayat/giveAccess")
     @FormUrlEncoded
     Call<ResponseUser> getPermission(@Field("idPasien") String idPasien,@Field("idDokter") String idDokter,@Header("Authorization")String Authorization);
+
+    //3030
+
+    @GET("social/artikel/all")
+    Call<ResponseArtikel> getArtikel(@Header("Authorization") String Authorization);
+
 }

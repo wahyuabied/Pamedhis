@@ -35,6 +35,17 @@ public class ServicesPamedhis {
 
     }
 
+    public static API buildServiceClient3030() {
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().connectTimeout(1, TimeUnit.MINUTES).readTimeout(30,TimeUnit.SECONDS).writeTimeout(15,TimeUnit.SECONDS).build();
+
+        return builder.baseUrl("http://abdullahainun.me:3030/api/")
+                .client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(API.class);
+
+    }
+
     public static String domain () {
         return "http://abdullahainun.me:3010/";
     }

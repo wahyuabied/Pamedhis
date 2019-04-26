@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mrabid.pamedhisjav">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -14,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.DetailRiwayatActivity"></activity>
+        <activity android:name=".activity.DetailArtikelActivity"></activity>
+        <activity android:name=".activity.DetailRiwayatActivity" />
         <activity android:name=".activity.DetailMyResep.DetailMyResepActivity" />
 
         <service

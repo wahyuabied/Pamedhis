@@ -1,56 +1,50 @@
 package com.mrabid.pamedhisjav.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Artikel implements Serializable {
-    private int id;
-    private String title;
-    private String deskripsi;
-    private String image;
+    private String _id;
+    private String judul;
+    private String isi;
+    private ArrayList<Dokter> dokter;
 
-    public Artikel(Artikel artikel) {
-        this.id = artikel.getId();
-        this.title = artikel.getTitle();
-        this.deskripsi = artikel.getDeskripsi();
-        this.image = artikel.getImage();
+    public Artikel(Artikel x) {
+        this._id = x.get_id();
+        this.judul = x.getJudul();
+        this.isi = x.getIsi();
+        this.dokter = x.getDokter();
     }
 
-    public Artikel(int id, String title, String deskripsi, String image) {
-        this.id = id;
-        this.title = title;
-        this.deskripsi = deskripsi;
-        this.image = image;
+    public String get_id() {
+        return _id;
     }
 
-    public int getId() {
-        return id;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getJudul() {
+        return judul;
     }
 
-    public String getTitle() {
-        return title;
+    public void setJudul(String judul) {
+        this.judul = judul;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getIsi() {
+        return isi;
     }
 
-    public String getDeskripsi() {
-        return deskripsi;
+    public void setIsi(String isi) {
+        this.isi = isi;
     }
 
-    public void setDeskripsi(String deskripsi) {
-        this.deskripsi = deskripsi;
+    public ArrayList<Dokter> getDokter() {
+        return dokter;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
+    public void setDokter(ArrayList<Dokter> dokter) {
+        this.dokter = dokter;
     }
 }
