@@ -80,11 +80,11 @@ public class HomeArtikelAdapter extends RecyclerView.Adapter<HomeArtikelAdapter.
 
     public ArrayList<String> putGambar(){
         ArrayList<String> temp = new ArrayList<>();
-        temp.add("https://cdn.sindonews.net/dyn/620/content/2018/08/27/155/1333308/batuk-dan-pilek-bisa-diatasi-tanpa-harus-minum-antibiotik-nhT.jpg");
-        temp.add("https://hellosehat.com/wp-content/uploads/2017/02/Makanan-dan-minuman-yang-baik-untuk-demam-berdarah-dengue-756x467.jpg");
-        temp.add("https://hellosehat.com/wp-content/uploads/2016/08/jenis-sakit-kepala-700x467.jpg");
-        temp.add("http://3.bp.blogspot.com/-wPx-h2M5Evc/T_qzQCtcj_I/AAAAAAAAAVA/Iz5LJaiow1o/s1600/cara+menghilangkan+panu.jpg");
         temp.add("https://statik.tempo.co/data/2012/09/10/id_139074/139074_620.jpg");
+        temp.add("https://hellosehat.com/wp-content/uploads/2017/02/Makanan-dan-minuman-yang-baik-untuk-demam-berdarah-dengue-756x467.jpg");
+        temp.add("https://cdn.sindonews.net/dyn/620/content/2018/08/27/155/1333308/batuk-dan-pilek-bisa-diatasi-tanpa-harus-minum-antibiotik-nhT.jpg");
+        temp.add("http://3.bp.blogspot.com/-wPx-h2M5Evc/T_qzQCtcj_I/AAAAAAAAAVA/Iz5LJaiow1o/s1600/cara+menghilangkan+panu.jpg");
+        temp.add("https://hellosehat.com/wp-content/uploads/2016/08/jenis-sakit-kepala-700x467.jpg");
         return temp;
     }
 }

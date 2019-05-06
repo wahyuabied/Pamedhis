@@ -9,7 +9,6 @@
         android:gravity="right"
         android:paddingRight="@dimen/_15sdp"
         android:layout_width="match_parent"
-        android:text="12-05-2019"
         android:textColor="#000"
         android:layout_height="wrap_content"
         android:id="@+id/itemHistory_tanggalBeli"/>
@@ -34,8 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:textColor="#000"
-                android:text="Nama Dokter"/>
+                android:textColor="#000" />
 
             <TextView
                 android:layout_below="@+id/itemHistory_tvNamaDokter"
@@ -44,8 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:textColor="#000"
-                android:text="SIP : 087/1998"/>
+                android:textColor="#000" />
 
             <TextView
                 android:layout_below="@+id/itemHistory_tvSIP"
@@ -53,8 +50,7 @@
                 android:id="@+id/itemHistory_tvAlamatPraktek"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
-                android:text="Jln. Cemengkalang No 67, Yogyakarta"/>
+                android:textColor="#000" />
             <ImageView
                 android:layout_centerVertical="true"
                 android:id="@+id/itemHistory_ivMoreDetail"
@@ -87,7 +83,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:textColor="#000"
-            android:text="21-05-2019"
             android:layout_marginRight="@dimen/_10sdp"
             android:id="@+id/itemHistory_tvtanggal"/>
 

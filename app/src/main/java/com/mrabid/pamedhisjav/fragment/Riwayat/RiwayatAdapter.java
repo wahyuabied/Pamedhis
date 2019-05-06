@@ -2,8 +2,11 @@ package com.mrabid.pamedhisjav.fragment.Riwayat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +19,10 @@ import com.mrabid.pamedhisjav.activity.DetailRiwayatActivity;
 import com.mrabid.pamedhisjav.model.BlockRiwayat;
 import com.mrabid.pamedhisjav.model.Riwayat;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -35,11 +41,15 @@ public class RiwayatAdapter extends RecyclerView.Adapter<RiwayatAdapter.MyViewHo
         return new RiwayatAdapter.MyViewHolder(LayoutInflater.from(context).inflate(R.layout.item_riwayat,null));
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(final RiwayatAdapter.MyViewHolder holder, int position) {
         final BlockRiwayat p = list.get(position);
         holder.namaDokter.setText(p.getDokter_docs().get(0).getNama());
-        holder.tanggal.setText(p.getData().getTanggal());
+
+        String date = p.getData().getTanggal();
+        holder.tanggal.setText(date);
+
         holder.lokasi.setText(p.getDokter_docs().get(0).getAlamat());
         holder.teleponDokter.setText(p.getDokter_docs().get(0).getNoTelp());
         holder.imageView.setImageResource(R.drawable.img_dokter);

@@ -5,6 +5,7 @@ import com.mrabid.pamedhisjav.model.Dokter;
 import com.mrabid.pamedhisjav.model.User;
 import com.mrabid.pamedhisjav.model.response.ResponseArtikel;
 import com.mrabid.pamedhisjav.model.response.ResponseDokter;
+import com.mrabid.pamedhisjav.model.response.ResponseResep;
 import com.mrabid.pamedhisjav.model.response.ResponseRiwayat;
 import com.mrabid.pamedhisjav.model.response.ResponseUser;
 
@@ -17,6 +18,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface API {
@@ -43,5 +46,17 @@ public interface API {
 
     @GET("social/artikel/all")
     Call<ResponseArtikel> getArtikel(@Header("Authorization") String Authorization);
+
+    @POST("social/obat/beforeBeli")
+    @FormUrlEncoded
+    Call<ResponseResep> getMedicineBefore(@Header("Authorization") String Authorization, @Field("idPasien")String idPasien);
+
+    @POST("social/obat/afterBeli")
+    @FormUrlEncoded
+    Call<ResponseResep> getMedicineAfter(@Header("Authorization") String Authorization, @Field("idPasien")String idPasien);
+
+    @PUT("social/obat/{id}/updateData")
+    Call<ResponseUser> beliObat(@Path("id")String id);
+
 
 }

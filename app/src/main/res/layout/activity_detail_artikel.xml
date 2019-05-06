@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/_10sdp"
-                    android:text="Data Access Permission"
+                    android:text="Detail Artikel"
                     android:textColor="#000"
                     android:textSize="9pt" />
 

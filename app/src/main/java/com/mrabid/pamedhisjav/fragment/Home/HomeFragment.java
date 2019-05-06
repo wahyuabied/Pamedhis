@@ -2,6 +2,7 @@ package com.mrabid.pamedhisjav.fragment.Home;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -53,7 +54,7 @@ import static android.content.Context.MODE_NO_LOCALIZED_COLLATORS;
 
 public class HomeFragment extends Fragment implements LocationListener {
 
-    ImageView profile,logout;
+    ImageView profile,logout,noConnection;
     CardView findNearest,about;
     LinearLayout loadArtikel;
     RecyclerView listArtikel;
@@ -90,6 +91,7 @@ public class HomeFragment extends Fragment implements LocationListener {
         logout = getActivity().findViewById(R.id.home_ivLogout);
         findNearest = getActivity().findViewById(R.id.home_cvFindNearest);
         about = getActivity().findViewById(R.id.home_cvAbout);
+        noConnection = getActivity().findViewById(R.id.home_ivNoConnection);
 
         loadArtikel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,12 +160,49 @@ public class HomeFragment extends Fragment implements LocationListener {
 
             }
         });
+
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(getActivity());
+                dialog.setCancelable(false);
+                dialog.setContentView(R.layout.dialog_about_me);
+
+                ImageView close = dialog.findViewById(R.id.dialog_close);
+                close.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+
+            }
+        });
+
+        noConnection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getArtikel(new CallbackSelf() {
+                    @Override
+                    public void onSuccess(boolean result) {
+                        if (result){
+                            mAdapter = new HomeArtikelAdapter(artikels,getActivity());
+                            listArtikel.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+                            listArtikel.setAdapter(mAdapter);
+                        }
+                    }
+                });
+            }
+        });
     }
 
     public void getArtikel(final CallbackSelf callbackSelf){
         ServicesPamedhis.buildServiceClient3030().getArtikel(user.getToken()).enqueue(new Callback<ResponseArtikel>() {
             @Override
             public void onResponse(Call<ResponseArtikel> call, Response<ResponseArtikel> response) {
+                noConnection.setVisibility(View.GONE);
+                listArtikel.setVisibility(View.VISIBLE);
                 if(response.body().isStatus()){
                     artikels = response.body().getData();
                     callbackSelf.onSuccess(true);
@@ -178,6 +217,8 @@ public class HomeFragment extends Fragment implements LocationListener {
                 callbackSelf.onSuccess(false);
                 Log.e("Error",t.toString());
                 Toast.makeText(getActivity(), "Tidak ada koneksi  internet", Toast.LENGTH_SHORT).show();
+                listArtikel.setVisibility(View.GONE);
+                noConnection.setVisibility(View.VISIBLE);
             }
         });
     }

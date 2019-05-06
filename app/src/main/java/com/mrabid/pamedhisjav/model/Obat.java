@@ -3,20 +3,32 @@ package com.mrabid.pamedhisjav.model;
 import java.io.Serializable;
 
 public class Obat implements Serializable {
-    private int id;
-    private String name;
+    private String _id;
+    private String namaObat;
     private String symbol;
+    private String dosis;
 
-    public Obat(int id, String name) {
-        this.id = id;
-        this.name = name;
-        this.symbol = "R";
+    public Obat(Obat o) {
+        this._id = o.get_id();
+        this.namaObat = o.getNamaObat();
+        this.symbol = o.getSymbol();
+        this.dosis = o.getDosis();
     }
 
-    public Obat(Obat obat) {
-        this.id = obat.getId();
-        this.name = obat.getName();
-        this.symbol = obat.getSymbol();
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    public String getNamaObat() {
+        return namaObat;
+    }
+
+    public void setNamaObat(String namaObat) {
+        this.namaObat = namaObat;
     }
 
     public String getSymbol() {
@@ -27,19 +39,11 @@ public class Obat implements Serializable {
         this.symbol = symbol;
     }
 
-    public int getId() {
-        return id;
+    public String getDosis() {
+        return dosis;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setDosis(String dosis) {
+        this.dosis = dosis;
     }
 }

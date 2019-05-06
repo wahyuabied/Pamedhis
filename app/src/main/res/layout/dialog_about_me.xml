@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_250sdp"
+    android:orientation="vertical"
+    android:padding="@dimen/_10sdp"
+    android:layout_height="@dimen/_200sdp">
+
+    <ImageView
+        android:id="@+id/dialog_close"
+        android:layout_gravity="right"
+        android:layout_width="@dimen/_20sdp"
+        android:src="@drawable/ic_close_black_24dp"
+        android:layout_height="@dimen/_20sdp" />
+    <LinearLayout
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:src="@drawable/img_logo"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_80sdp"
+            android:src="@drawable/img_call_logo"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="@dimen/_30sdp"
+        android:textSize="8pt"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pamedhis V.2.1"/>
+
+
+
+</LinearLayout>

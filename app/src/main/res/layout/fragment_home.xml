@@ -213,12 +213,24 @@
             </LinearLayout>
 
         </RelativeLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:layout_marginTop="@dimen/_5sdp"
-            android:id="@+id/home_rvArtikel"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_150sdp">
-        </android.support.v7.widget.RecyclerView>
+            android:layout_height="wrap_content">
+            <ImageView
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_50sdp"
+                android:id="@+id/home_ivNoConnection"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:src="@drawable/ic_no_connection"/>
+            <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="@dimen/_5sdp"
+                android:id="@+id/home_rvArtikel"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp">
+            </android.support.v7.widget.RecyclerView>
+        </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

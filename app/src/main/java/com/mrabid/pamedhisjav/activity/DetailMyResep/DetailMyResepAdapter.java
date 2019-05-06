@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mrabid.pamedhisjav.R;
@@ -35,6 +36,9 @@ public class DetailMyResepAdapter extends RecyclerView.Adapter<DetailMyResepAdap
     @Override
     public void onBindViewHolder(final DetailMyResepAdapter.MyViewHolder holder, int position) {
         Obat p = obats.get(position);
+        holder.symbol.setText(p.getSymbol());
+        holder.name.setText(p.getNamaObat());
+        holder.dosis.setText(p.getDosis());
 
     }
 
@@ -45,12 +49,12 @@ public class DetailMyResepAdapter extends RecyclerView.Adapter<DetailMyResepAdap
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        RecyclerView recyclerView;
+        TextView symbol,name,dosis;
         public MyViewHolder(View inflate) {
             super(inflate);
-            recyclerView = inflate.findViewById(R.id.itemHistory_rvObat);
-
-
+            symbol = inflate.findViewById(R.id.itemObat_tvSymbol);
+            name = inflate.findViewById(R.id.itemObat_tvNameObat);
+            dosis = inflate.findViewById(R.id.itemObat_tvUkuran);
         }
     }
 

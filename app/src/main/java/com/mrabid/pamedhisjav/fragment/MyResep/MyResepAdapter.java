@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mrabid.pamedhisjav.R;
 import com.mrabid.pamedhisjav.activity.DetailMyResep.DetailMyResepActivity;
@@ -29,14 +31,23 @@ public class MyResepAdapter extends RecyclerView.Adapter<MyResepAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(final MyResepAdapter.MyViewHolder holder, int position) {
-        Resep p = reseps.get(position);
+        final Resep p = reseps.get(position);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context, DetailMyResepActivity.class);
+                i.putExtra("resep",p);
                 context.startActivity(i);
             }
         });
+        try{
+            holder.namaDokter.setText(p.getDokter_docs().get(0).getNama());
+            holder.sipDokter.setText(p.getDokter_docs().get(0).getNoIzin());
+            holder.alamatDokter.setText(p.getDokter_docs().get(0).getAlamat());
+        }catch (Exception e){
+            Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
@@ -47,10 +58,14 @@ public class MyResepAdapter extends RecyclerView.Adapter<MyResepAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
+        TextView namaDokter,sipDokter,alamatDokter;
         CardView cardView;
         public MyViewHolder(View inflate) {
             super(inflate);
             cardView = inflate.findViewById(R.id.itemMyResep_cvHeader);
+            namaDokter = inflate.findViewById(R.id.itemMyResep_tvNamaDokter);
+            sipDokter =  inflate.findViewById(R.id.itemMyResep_tvSIP);
+            alamatDokter =  inflate.findViewById(R.id.itemMyResep_tvAlamatPraktek);
 
         }
     }

@@ -4,89 +4,77 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Resep implements Serializable {
-    private int id;
-    private String penerima;
-    private String tanggal;
-    private String jumlah;
-    private Dokter dokter;
-    private String status;
-    private ArrayList<Obat> obats;
+    private String _id;
+    private String idRiwayat;
+    private int status;
+    private String idPasien;
+    private ArrayList<Obat> resep;
+    private ArrayList<BlockRiwayat> riwayat;
+    private ArrayList<Dokter> dokter_docs;
 
-    public Resep(int id, String penerima, String tanggal, String jumlah, Dokter dokter,String status) {
-        this.id = id;
-        this.penerima = penerima;
-        this.tanggal = tanggal;
-        this.jumlah = jumlah;
-        this.dokter = dokter;
-        this.status = status;
+    public Resep(Resep r) {
+        this._id = r.get_id();
+        this.idRiwayat = r.getIdRiwayat();
+        this.status = r.getStatus();
+        this.idPasien = r.getIdPasien();
+        this.resep = r.getResep();
+        this.riwayat = r.getRiwayat();
+        this.dokter_docs = r.getDokter_docs();
     }
 
-    public Resep(int id, String penerima, String tanggal, String jumlah, Dokter dokter, String status, ArrayList<Obat> obats) {
-        this.id = id;
-        this.penerima = penerima;
-        this.tanggal = tanggal;
-        this.jumlah = jumlah;
-        this.dokter = dokter;
-        this.status = status;
-        this.obats = obats;
+    public ArrayList<Dokter> getDokter_docs() {
+        return dokter_docs;
     }
 
-    public ArrayList<Obat> getObats() {
-        return obats;
+    public void setDokter_docs(ArrayList<Dokter> dokter_docs) {
+        this.dokter_docs = dokter_docs;
     }
 
-    public void setObats(ArrayList<Obat> obats) {
-        this.obats = obats;
+    public ArrayList<BlockRiwayat> getRiwayat() {
+        return riwayat;
     }
 
-    public Resep() {
+    public void setRiwayat(ArrayList<BlockRiwayat> riwayat) {
+        this.riwayat = riwayat;
     }
 
-    public String getStatus() {
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    public String getIdRiwayat() {
+        return idRiwayat;
+    }
+
+    public void setIdRiwayat(String idRiwayat) {
+        this.idRiwayat = idRiwayat;
+    }
+
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public int getId() {
-        return id;
+    public String getIdPasien() {
+        return idPasien;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdPasien(String idPasien) {
+        this.idPasien = idPasien;
     }
 
-    public String getPenerima() {
-        return penerima;
+    public ArrayList<Obat> getResep() {
+        return resep;
     }
 
-    public void setPenerima(String penerima) {
-        this.penerima = penerima;
-    }
-
-    public String getTanggal() {
-        return tanggal;
-    }
-
-    public void setTanggal(String tanggal) {
-        this.tanggal = tanggal;
-    }
-
-    public String getJumlah() {
-        return jumlah;
-    }
-
-    public void setJumlah(String jumlah) {
-        this.jumlah = jumlah;
-    }
-
-    public Dokter getDokter() {
-        return dokter;
-    }
-
-    public void setDokter(Dokter dokter) {
-        this.dokter = dokter;
+    public void setResep(ArrayList<Obat> resep) {
+        this.resep = resep;
     }
 }

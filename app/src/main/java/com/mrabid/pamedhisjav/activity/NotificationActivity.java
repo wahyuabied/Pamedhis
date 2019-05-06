@@ -94,6 +94,7 @@ public class NotificationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 onBackPressed();
                 notificationManager.cancel(Integer.parseInt(getIntent().getStringExtra("id_notif")));
+                Toast.makeText(NotificationActivity.this, "Anda berhasil menolak request", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
